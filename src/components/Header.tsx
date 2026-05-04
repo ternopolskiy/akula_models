@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getModelBySlug } from "@/data/models";
+import { withBasePath } from "@/lib/basePath";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +67,7 @@ export function Header() {
             {isModelPage && model && (
               <>
                 <a
-                  href={`/models/${model.slug}/portfolio.pdf`}
+                  href={withBasePath(`/models/${model.slug}/portfolio.pdf`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-btn"

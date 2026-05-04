@@ -165,15 +165,6 @@ img[loading="lazy"] {
   }
 }
 
-/* Preload critical resources */
-@media (min-width: 1024px) {
-  .preload-hero {
-    content: url("/models/aleix-hall/hero.webp");
-    visibility: hidden;
-    position: absolute;
-  }
-}
-
 /* Optimize animations */
 @keyframes fadeIn {
   from { opacity: 0; }

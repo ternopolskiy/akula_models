@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/basePath";
+
 export type ModelStats = {
   height: string;
   bust?: string;
@@ -261,6 +263,9 @@ export function getModelBySlug(slug: string): Model | undefined {
 export function getGalleryImages(slug: string, count: number): string[] {
   return Array.from(
     { length: count },
-    (_, i) => `/models/${slug}/gallery/${String(i + 1).padStart(2, "0")}.webp`
+    (_, i) =>
+      withBasePath(
+        `/models/${slug}/gallery/${String(i + 1).padStart(2, "0")}.webp`
+      )
   );
 }

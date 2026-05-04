@@ -2,6 +2,7 @@ import { models, getModelBySlug } from "@/data/models";
 import { ModelPage } from "@/components/ModelPage";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { withBasePath } from "@/lib/basePath";
 
 interface PageProps {
   params: { slug: string };
@@ -22,7 +23,7 @@ export async function generateMetadata({
     description: model.description || `${model.name} | AKULA Models Agency`,
     openGraph: {
       title: `${model.name} — AKULA Models`,
-      images: [`/models/${model.slug}/cover.webp`],
+      images: [withBasePath(`/models/${model.slug}/cover.webp`)],
     },
   };
 }

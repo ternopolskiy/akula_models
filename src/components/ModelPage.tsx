@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Model, getGalleryImages } from "@/data/models";
+import { withBasePath } from "@/lib/basePath";
 import { GalleryLightbox } from "./GalleryLightbox";
 import { ScrollToTop } from "./ScrollToTop";
 
@@ -41,7 +42,7 @@ export function ModelPage({ model }: ModelPageProps) {
 
   const handleDownloadPortfolio = () => {
     const link = document.createElement("a");
-    link.href = `/models/${model.slug}/portfolio.pdf`;
+    link.href = withBasePath(`/models/${model.slug}/portfolio.pdf`);
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     document.body.appendChild(link);
@@ -332,7 +333,7 @@ export function ModelPage({ model }: ModelPageProps) {
               }}
             >
               <Image
-                src={`/models/${model.slug}/hero.webp`}
+                src={withBasePath(`/models/${model.slug}/hero.webp`)}
                 alt={`${model.name} hero`}
                 width={1200}
                 height={1600}

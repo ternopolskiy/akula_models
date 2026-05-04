@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Model } from "@/data/models";
+import { withBasePath } from "@/lib/basePath";
 
 interface ModelCardProps {
   model: Model;
@@ -102,7 +103,7 @@ export function ModelCard({ model, index }: ModelCardProps) {
 
           <div style={{ position: "relative", width: "100%", height: "100%" }}>
             <Image
-              src={`/models/${model.slug}/cover.webp`}
+              src={withBasePath(`/models/${model.slug}/cover.webp`)}
               alt={model.name}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
