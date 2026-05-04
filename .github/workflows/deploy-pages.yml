@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate optimized WebP assets
+        run: npm run images:optimize
+
       - name: Build static export
         run: npm run build
         env:
