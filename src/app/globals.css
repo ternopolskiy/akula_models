@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-editorial: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+  --color-black: #0a0a0a;
+  --color-white: #ffffff;
+  --color-gray-light: #a0a0a0;
+  --color-gray-dark: #3a3a3a;
+  --color-border: #e5e5e5;
+}
+
+html {
+  scroll-behavior: auto;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+/* Preconnect for better performance */
+@layer base {
+  @font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local("Cormorant Garamond Light"), local("CormorantGaramond-Light");
+  }
+
+  @font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Cormorant Garamond Regular"), local("CormorantGaramond-Regular");
+  }
+
+  @font-face {
+    font-family: "Cormorant Garamond";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local("Cormorant Garamond Medium"), local("CormorantGaramond-Medium");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local("Inter Light"), local("Inter-Light");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Inter Regular"), local("Inter-Regular");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local("Inter Medium"), local("Inter-Medium");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local("Inter SemiBold"), local("Inter-SemiBold");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local("Inter Bold"), local("Inter-Bold");
+  }
+}
+
+/* Photoswipe overrides */
+.pswp {
+  z-index: 9999;
+}
+
+.pswp__bg {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #808080;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Stats table */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: baseline;
+  padding: 6px 0;
+}
+
+/* Smooth image load */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Lazy loading optimization */
+img[loading="lazy"] {
+  min-height: 1px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Preload critical resources */
+@media (min-width: 1024px) {
+  .preload-hero {
+    content: url("/models/aleix-hall/hero.webp");
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+/* Optimize animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Image loading states */
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
